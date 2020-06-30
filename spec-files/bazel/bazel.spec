@@ -24,6 +24,7 @@ BuildRequires:	gcc
 BuildRequires:	gcc-c++	
 BuildRequires:	java-11-openjdk
 BuildRequires:	java-11-openjdk-devel
+BuildRequires:	python3
 BuildRequires:	unzip
 BuildRequires:  zip
 
