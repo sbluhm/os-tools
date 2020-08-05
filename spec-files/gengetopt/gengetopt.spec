@@ -10,6 +10,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc
 BuildRequires:  valgrind
 BuildRequires:  texinfo
+BuildRequires:  help2man
 Provides:         bundled(gnulib)
 
 %description
