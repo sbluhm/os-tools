@@ -2,9 +2,9 @@ Summary: A library for supporting Open Financial Exchange (OFX)
 Name: libofx
 Version: 0.9.15
 Release: 1%{?dist}
-URL: http://libofx.sourceforge.net/
+URL: https://libofx.sourceforge.net/
 License: GPLv2+
-Source: http://downloads.sourceforge.net/libofx/%{name}-%{version}.tar.gz
+Source: https://downloads.sourceforge.net/libofx/%{name}-%{version}.tar.gz
 Patch0: fix-ftbfs-gcc4.7.diff
 BuildRequires: gcc-c++
 BuildRequires: opensp-devel
