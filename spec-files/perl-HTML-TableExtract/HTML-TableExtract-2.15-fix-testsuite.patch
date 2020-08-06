@@ -1,0 +1,20 @@
+commit 5debded214277d33603c05e0426b662c0aa06c1e
+Author: Emmanuel Seyman <emmanuel@seyman.fr>
+Date:   Tue Apr 2 16:28:35 2019 +0200
+
+    Revert "purge trees on re-parse when in tree mode"
+    
+    This reverts commit badb303cc65c8b912b10086493d74cf2dabf265c.
+
+diff --git a/lib/HTML/TableExtract.pm b/lib/HTML/TableExtract.pm
+index dae1e69..4a33f62 100644
+--- a/lib/HTML/TableExtract.pm
++++ b/lib/HTML/TableExtract.pm
+@@ -438,7 +438,6 @@ sub _reset_state {
+   $self->{_counts}        = [];
+   $self->{_in_a_table}    = 0;
+   $self->{_parsing}       = 0;
+-  $self->tree->delete_content() if TREE();
+ }
+ 
+ sub _emsg {
