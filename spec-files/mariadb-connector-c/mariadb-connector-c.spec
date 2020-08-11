@@ -66,7 +66,9 @@ Contains everything needed to build against libmariadb.so >=3 client library.
 Summary:        Testsuite files for mariadb-connector-c
 Requires:       %{name} = %{version}-%{release}
 Requires:       cmake
+%if 0%{?rhel} != 7
 Recommends:     mariadb-server
+%endif
 
 %description test
 Testsuite files for mariadb-connector-c.
