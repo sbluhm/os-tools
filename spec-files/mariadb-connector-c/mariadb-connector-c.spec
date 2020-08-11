@@ -23,7 +23,7 @@ Version:        3.1.9
 Release:        6%{?with_debug:.debug}%{?dist}
 Summary:        The MariaDB Native Client library (C driver)
 License:        LGPLv2+
-Source:         https://downloads.mariadb.org/interstitial/connector-c-%{version}/%{name}-%{version}-src.tar.gz
+Source:         https://downloads.mariadb.org/f/connector-c-%{version}/%{name}-%{version}-src.tar.gz?serve
 Source2:        my.cnf
 Source3:        client.cnf
 Url:            http://mariadb.org/
