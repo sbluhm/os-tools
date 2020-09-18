@@ -1,0 +1,16 @@
+diff -ru quesoglc-0.7.2/src/unicode.c quesoglc-0.7.2/src/unicode.c
+--- quesoglc-0.7.2/src/unicode.c	2018-02-28 12:02:55.130326441 +0000
++++ quesoglc-0.7.2/src/unicode.c	2018-02-28 12:03:46.525939948 +0000
+@@ -25,10 +25,10 @@
+  *  defines the routines used to manipulate Unicode strings and characters
+  */
+ 
+-#include <fribidi/fribidi.h>
+-
+ #include "internal.h"
+ 
++#undef HAVE_CONFIG_H
++#include <fribidi/fribidi.h>
+ 
+ 
+ /* Find a Unicode name from its code */
