@@ -11,14 +11,14 @@ BuildRequires:  gnutls-devel
 BuildRequires:  libmicrohttpd-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pam-devel
-BuildRequires:	uuid-devel
+BuildRequires:	libuuid-devel
 BuildRequires:	make
 
 Requires:	gnutls
 Requires:	libmicrohttpd
 Requires:	libxml2
 Requires:	pam
-Requires:	uuid
+Requires:	libuuid
 
 %description
 webdavd is a WebDAV server designed to be a replace for SMBA providing access to a system's files without taking ownership of them. It aims to differ from most WebDAV servers on a number of points:
