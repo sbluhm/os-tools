@@ -1,8 +1,8 @@
 Name: gnucash-docs
 Summary: Help files and documentation for the GnuCash personal finance manager
-Version: 4.1
+Version: 4.2
 URL: http://gnucash.org/
-Release: 2%{?dist}
+Release: 1%{?dist}
 License: GFDL
 Source: https://downloads.sourceforge.net/gnucash/%{name}-%{version}.tar.gz
 BuildArchitectures: noarch
@@ -44,6 +44,9 @@ end
 return 0
 
 %changelog
+* Mon Sep 28 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> - 4.2-1
+- Updated to version 4.2
+
 * Thu Aug 06 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> - 4.1-2
 - Updated Source url to https.
 
