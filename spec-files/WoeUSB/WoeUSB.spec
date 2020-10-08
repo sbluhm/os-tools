@@ -53,4 +53,5 @@ make %{?_smp_mflags}
 
 
 %changelog
-
+* Thu Oct 08 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> - 3.3.1-1
+- Initial version
