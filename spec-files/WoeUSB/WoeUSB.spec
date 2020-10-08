@@ -12,7 +12,8 @@ BuildRequires:	autoconf
 BuildRequires:	make
 BuildRequires:  automake
 BuildRequires:	libtool
-#Requires:	wxGTK3
+BuildRequires:	wxGTK3-devel
+Requires:	wxGTK3
 
 %description
 WoeUSB is a simple tool that enable you to create your own usb stick windows installer from an iso image or a real DVD. It is a fork of Congelli501's WinUSB. 
