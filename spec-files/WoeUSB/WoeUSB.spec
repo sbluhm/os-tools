@@ -11,7 +11,7 @@ Source0:	https://github.com/slacka/%{name}/archive/v%{version}.tar.gz
 BuildRequires:	autoconf
 BuildRequires:	make
 BuildRequires:  automake
-BuildRequires:	libtoolize
+BuildRequires:	libtool
 #Requires:	wxGTK3
 
 %description
