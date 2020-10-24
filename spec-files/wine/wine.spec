@@ -4,7 +4,7 @@ Release:	1%{?dist}
 Summary:	Wine with 32 and 64 bit libraries.
 
 URL:		https://www.winehq.org
-Source0:	http://dl.winehq.org/wine/source/5.x/wine-${ver}.tar.xz
+Source0:	https://dl.winehq.org/wine/source/5.x/wine-${ver}.tar.xz
 License:	NONE
 BuildRequires: alsa-lib-devel
 BuildRequires: alsa-lib-devel.i686
