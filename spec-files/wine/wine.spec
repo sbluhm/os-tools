@@ -27,7 +27,7 @@ BuildRequires: giflib-devel
 BuildRequires: giflib-devel(x86-32)
 BuildRequires: glib2-devel(x86-32)
 BuildRequires: glib2-devel
-BuildRequires: vglibc-devel
+BuildRequires: glibc-devel
 BuildRequires: glibc-devel(x86-32)
 BuildRequires: gnutls-devel(x86-32)
 BuildRequires: gnutls-devel
@@ -45,9 +45,9 @@ BuildRequires: lcms2-devel(x86-32)
 BuildRequires: libexif-devel(x86-32)
 BuildRequires: libgcc
 Requires: libgcc
-Requires: vlibgcc(x86-32)
-BuildRequires: vlibgcc(x86-32)
-BuildRequires: vlibgphoto2-devel
+Requires: libgcc(x86-32)
+BuildRequires: libgcc(x86-32)
+BuildRequires: libgphoto2-devel
 BuildRequires: libgphoto2-devel(x86-32)
 BuildRequires: libICE-devel(x86-32)
 BuildRequires: libieee1284-devel(x86-32)
@@ -111,7 +111,6 @@ BuildRequires: openldap-devel
 BuildRequires: openldap-devel(x86-32)
 BuildRequires: pulseaudio-libs-devel
 BuildRequires: pulseaudio-libs-devel(x86-32)
-BuildRequires: qt-devel(x86-32)
 BuildRequires: samba-winbind-clients
 Requires: samba-winbind-clients
 BuildRequires: sane-backends-devel(x86-32)
