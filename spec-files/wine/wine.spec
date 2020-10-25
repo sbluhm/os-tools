@@ -14,6 +14,8 @@ BuildRequires: cups-devel
 BuildRequires: cups-devel(x86-32)
 BuildRequires: dbus-devel
 BuildRequires: dbus-devel(x86-32)
+Requires: flex
+BuildRequires: flex
 BuildRequires: fontconfig-devel
 BuildRequires: fontconfig-devel(x86-32)
 BuildRequires: fontforge
