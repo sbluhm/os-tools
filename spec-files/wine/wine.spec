@@ -9,7 +9,7 @@ License:	NONE
 BuildRequires: alsa-lib-devel
 BuildRequires: alsa-lib-devel(x86-32)
 BuildRequires: audiofile-devel
-BuildRequires: audiofile-devel(x86-32)
+#BuildRequires: audiofile-devel(x86-32) # does not seem to exist
 BuildRequires: cups-devel
 BuildRequires: cups-devel(x86-32)
 BuildRequires: dbus-devel
