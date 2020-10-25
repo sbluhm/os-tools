@@ -50,10 +50,10 @@ BuildRequires: krb5-libs(x86-32)
 BuildRequires: lcms2-devel
 BuildRequires: lcms2-devel(x86-32)
 BuildRequires: libexif-devel(x86-32)
-BuildRequires: libFAudio-devel
-Requires: libFAudio
-BuildRequires: libFAudio-devel(x86-32)
-Requires: libFAudio(x86-32)
+#BuildRequires: libFAudio-devel
+#Requires: libFAudio
+#BuildRequires: libFAudio-devel(x86-32)
+#Requires: libFAudio(x86-32)
 
 BuildRequires: libgcc
 Requires: libgcc
@@ -86,7 +86,7 @@ BuildRequires: libusb-devel(x86-32)
 BuildRequires: libv4l-devel
 BuildRequires: libv4l-devel(x86-32)
 BuildRequires: libvkd3d-devel
-BuildRequires: libvkd3di-devel(x86-32)
+#BuildRequires: libvkd3di-devel(x86-32)
 BuildRequires: libX11-devel(x86-32)
 BuildRequires: libX11-devel
 BuildRequires: libXcomposite-devel
