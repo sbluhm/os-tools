@@ -14,6 +14,7 @@ Requires:	bison
 BuildRequires:	bison
 BuildRequires: cups-devel
 BuildRequires: cups-devel(x86-32)
+BuildRequires: cups-libs(x86-32)
 BuildRequires: dbus-devel
 BuildRequires: dbus-devel(x86-32)
 Requires: flex
@@ -41,12 +42,19 @@ BuildRequires: gstreamer1-devel
 BuildRequires: gstreamer1-devel(x86-32)
 BuildRequires: gstreamer1-plugins-base-devel
 BuildRequires: gstreamer1-plugins-base-devel(x86-32)
+BuildRequires: gstreamer1-plugins-base(x86-32)
 BuildRequires: icoutils
 Requires: icoutils
 BuildRequires: ImageMagick-devel
+BuildRequires: krb5-libs(x86-32)
 BuildRequires: lcms2-devel
 BuildRequires: lcms2-devel(x86-32)
 BuildRequires: libexif-devel(x86-32)
+BuildRequires: libFAudio-devel
+Requires: libFAudio
+BuildRequires: libFAudio-devel(x86-32)
+Requires: libFAudio(x86-32)
+
 BuildRequires: libgcc
 Requires: libgcc
 Requires: libgcc(x86-32)
@@ -58,6 +66,7 @@ BuildRequires: libieee1284-devel(x86-32)
 BuildRequires: libjpeg-turbo-devel
 BuildRequires: libjpeg-turbo-devel(x86-32)
 BuildRequires: libmpg123-devel
+BuildRequires: libmpg123-devel(x86-32)
 BuildRequires: libpcap-devel
 BuildRequires: libpcap-devel(x86-32)
 BuildRequires: libpng-devel(x86-32)
@@ -71,10 +80,13 @@ BuildRequires: libstdc++-devel
 BuildRequires: libstdc++-devel(x86-32)
 BuildRequires: libtiff-devel
 BuildRequires: libtiff-devel(x86-32)
+BuildRequires: libusb(x86-32)
 BuildRequires: libusb-devel
 BuildRequires: libusb-devel(x86-32)
 BuildRequires: libv4l-devel
 BuildRequires: libv4l-devel(x86-32)
+BuildRequires: libvkd3d-devel
+BuildRequires: libvkd3di-devel(x86-32)
 BuildRequires: libX11-devel(x86-32)
 BuildRequires: libX11-devel
 BuildRequires: libXcomposite-devel
@@ -110,6 +122,7 @@ BuildRequires: ncurses-devel(x86-32)
 BuildRequires: ocl-icd
 Requires: ocl-icd
 BuildRequires: openal-soft-devel
+BuildRequires: openal-soft-devel(x86-32)
 BuildRequires: opencl-headers
 BuildRequires: openldap-devel
 BuildRequires: openldap-devel(x86-32)
@@ -119,6 +132,10 @@ BuildRequires: samba-winbind-clients
 Requires: samba-winbind-clients
 BuildRequires: sane-backends-devel(x86-32)
 BuildRequires: sane-backends-devel
+Requires: SDL2
+Requires: SDL2(x86-32)
+BuildRequires: SDL2-devel(x86-32)
+BuildRequires: SDL2-devel
 BuildRequires: systemd-devel(x86-32)
 BuildRequires: systemd-devel
 BuildRequires: unixODBC-devel(x86-32)
@@ -147,6 +164,7 @@ make
 
 
 %install
+cd wine32
 %make_install
 cd ../wine64
 %make_install
