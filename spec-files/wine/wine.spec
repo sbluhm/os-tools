@@ -143,6 +143,9 @@ Requires: unixODBC(x86-32)
 BuildRequires: unixODBC(x86-32)
 Requires: unixODBC(x86-32)
 BuildRequires: zlib-devel(x86-32)
+#libhal 	Dynamic device detection 	Obsolete; use libdbus instead.
+#OpenAL 	Audio engine 	Should never be needed. (This replaces native openal32 shipped by applications.) 
+
 
 %description
 Wine with 32 and 64 bit libraries.
@@ -154,12 +157,12 @@ Wine with 32 and 64 bit libraries.
 %build
 mkdir -p wine32 wine64 
 cd wine64
-../configure --enable-win64
+../configure --enable-win64 --prefix=/usr
 make
 cd ../wine32
 ../configure
 make
-PKG_CONFIG_PATH=/usr/lib/pkgconfig ../configure --with-wine64=../wine64
+PKG_CONFIG_PATH=/usr/lib/pkgconfig ../configure --with-wine64=../wine64 --prefix=/usr
 make
 
 
@@ -171,6 +174,11 @@ cd ../wine64
 
 %files
 %doc
+/usr/bin/
+/usr/include/wine/
+/usr/lib/wine/
+/usr/lib64/wine/
+/usr/share/wine/
 
 
 
