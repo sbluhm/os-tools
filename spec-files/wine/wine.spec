@@ -173,11 +173,14 @@ cd ../wine64
 %make_install
 
 %files
-%doc
+%doc /usr/share/man/
 /usr/bin/
 /usr/include/wine/
+/usr/lib/libwine.*
 /usr/lib/wine/
+/usr/lib64/libwine.*
 /usr/lib64/wine/
+/usr/share/applications/wine.desktop
 /usr/share/wine/
 
 
