@@ -11,7 +11,7 @@ Source0:	https://github.com/home-assistant/%{name}/archive/refs/tags/%{version}.
 
 BuildRequires:	go
 
-Requires:	udisk2
+Requires:	udisks2
 
 %description
 The OS Agent for Home Assistant is used for Home Assistant OS and Home Assistant Supervised installation types.
