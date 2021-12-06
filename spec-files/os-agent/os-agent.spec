@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 Name:		os-agent	
 Version:	1.2.2
 Release:	1%{?dist}
@@ -23,10 +25,10 @@ It allows the Home Assistant Supervisor to communicate with the host operating s
 go build -ldflags "-X main.version="
 
 %install
-mkdir -p %{buildroot}/{_unitdir}
+mkdir -p %{buildroot}/%{_unitdir}
 mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_sysconfdir}/dbus-1/system.d
-cp contrib/haos-agent.service %{buildroot}/{_unitdir}
+cp contrib/haos-agent.service %{buildroot}/%{_unitdir}
 cp contrib/io.hass.conf %{buildroot}/%{_sysconfdir}/dbus-1/system.d
 cp os-agent %{buildroot}/%{_bindir}
 
@@ -41,9 +43,9 @@ cp os-agent %{buildroot}/%{_bindir}
 
 
 %files
-/etc/dbus-1/system.d/haos-agent.service
-/etc/systemd/io.hass.conf
-/usr/bin/os-agent
+%{_unitdir}/haos-agent.service
+%{_sysconfdir}/dbus-1/system.d/io.hass.conf
+%{_bindir}/os-agent
 
 
 
