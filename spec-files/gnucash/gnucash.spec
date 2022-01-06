@@ -1,6 +1,6 @@
 Name: gnucash
 Summary: Finance management application
-Version: 4.2
+Version: 4.9
 URL: http://gnucash.org/
 Release: 1%{?dist}
 License: GPLv2+
@@ -92,6 +92,9 @@ appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_datadir}/metainfo/gnucas
 %config(noreplace) %{_sysconfdir}/gnucash/*
 
 %changelog
+* Thu Jan 06 2022 Stefan Bluhm <stefan.bluhm@clacee.eu> 4.9-1
+- Updated to 4.9-1
+
 * Sun Sep 26 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> 4.2-1
 - Updated to 4.2-1
 
