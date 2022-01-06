@@ -1,12 +1,13 @@
 Name: gnucash-docs
 Summary: Help files and documentation for the GnuCash personal finance manager
 Version: 4.9
-URL: http://gnucash.org/
+URL: https://gnucash.org/
 Release: 1%{?dist}
 License: GFDL
 Source: https://downloads.sourceforge.net/gnucash/%{name}-%{version}.tar.gz
 BuildArchitectures: noarch
 BuildRequires: libxslt
+BuildRequires: cmake make gcc gcc-c++
 Requires: yelp
 
 %description
@@ -17,20 +18,17 @@ help files and documentation for GnuCash.
 %setup -q
 
 %build
-touch configure.ac aclocal.m4 Makefile.in configure gnucash-docs.spec
-%configure --without-scrollkeeper
-make
+%cmake
+%cmake_build
 
 %install
-rm -rf $RPM_BUILD_ROOT
+%cmake_install
 
-make install DESTDIR=$RPM_BUILD_ROOT
-
-rm -rf	$RPM_BUILD_ROOT/var/scrollkeeper
+rm -f %{buildroot}%{_datadir}/gnucash-docs/COPYING*
 
 %files
 %{_datadir}/gnome/help/*
-%doc AUTHORS ChangeLog* HACKING NEWS README
+%doc AUTHORS ChangeLog* NEWS README
 %license COPYING*
 
 %pretrans -p <lua>
@@ -44,14 +42,32 @@ end
 return 0
 
 %changelog
-* Thu Jan 06 2022 Stefan Bluhm <stefan.bluhm@clacee.eu> - 4.9-1
-- Updated to version 4.9
+* Mon Dec 20 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.9-1
+- 4.9
 
-* Mon Sep 28 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> - 4.2-1
-- Updated to version 4.2
+* Thu Dec 09 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.8-1
+- 4.8
 
-* Thu Aug 06 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> - 4.1-2
-- Updated Source url to https.
+* Mon Sep 27 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.7-1
+- 4.7
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jun 28 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.6-1
+- 4.6
+
+* Fri Apr 09 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.5-1
+- 4.5
+
+* Sat Jan 30 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.4-1
+- 4.4
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sun Oct 11 2020 Bill Nottingham <notting@splat.cc> - 4.2-1
+- update to 4.2
 
 * Mon Jul 27 2020 Bill Nottingham <notting@splat.cc> - 4.1-1
 - update to 4.1
@@ -221,3 +237,4 @@ return 0
 
 * Thu Feb  1 2007 Bill Nottingham <notting@redhat.com> - 2.0.1-1
 - fork off from main gnucash package
+
