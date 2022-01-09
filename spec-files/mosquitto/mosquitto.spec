@@ -6,8 +6,8 @@ Release:        1%{?dist}
 Summary:        Open Source MQTT v5/v3.1.x Broker
 
 License:        EPL-2.0
-URL:            http://mosquitto.org/
-Source0:        http://mosquitto.org/files/source/%{name}-%{version}.tar.gz
+URL:            https://mosquitto.org/
+Source0:        https://mosquitto.org/files/source/%{name}-%{version}.tar.gz
 
 BuildRequires:  c-ares-devel
 BuildRequires:  cjson-devel
