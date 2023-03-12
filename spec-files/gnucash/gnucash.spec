@@ -16,7 +16,7 @@ BuildRequires: perl-generators, perl-podlators
 BuildRequires: libxml2 >= 2.9.4, libxslt-devel, zlib-devel
 BuildRequires: gtk3 >= 3.22.30, glib2 >= 2.56.1
 BuildRequires: libofx-devel >= 0.9.12, aqbanking-devel >= 5.7.0, gwenhywfar-gui-gtk3-devel >= 4.20
-%if 0%{?rhel} => 9
+%if 0%{?rhel} >= 9
 BuildRequires: guile22-devel
 %else
 BuildRequires: guile-devel >= 5:2.0.9
