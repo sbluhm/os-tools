@@ -1,12 +1,12 @@
 Name: gnucash
 Summary: Finance management application
-Version: 4.9
-URL: https://gnucash.org/
+Version: 4.2
+URL: http://gnucash.org/
 Release: 1%{?dist}
 License: GPLv2+
 Source: https://downloads.sourceforge.net/sourceforge/gnucash/gnucash-%{version}.tar.bz2
 
-Patch0: rpath.patch
+# upstream git fixes
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1563466
 ExcludeArch: ppc64 s390x
@@ -16,22 +16,20 @@ BuildRequires: perl-generators, perl-podlators
 BuildRequires: libxml2 >= 2.9.4, libxslt-devel, zlib-devel
 BuildRequires: gtk3 >= 3.22.30, glib2 >= 2.56.1
 BuildRequires: libofx-devel >= 0.9.12, aqbanking-devel >= 5.7.0, gwenhywfar-gui-gtk3-devel >= 4.20
-%if 0%{?fedora} >= 32 || 0%{?rhel} > 8
+%if 0%{?rhel} => 9
 BuildRequires: guile22-devel
-%global guilever 2.2
 %else
-BuildRequires: guile-devel
-%global guilever 2.0
+BuildRequires: guile-devel >= 5:2.0.9
 %endif
 BuildRequires: swig >= 3.0.12
 BuildRequires: desktop-file-utils, gettext >= 0.9.6
 BuildRequires: libdbi-devel >= 0.8.3, libdbi-dbd-mysql, libdbi-dbd-pgsql, libdbi-dbd-sqlite
 BuildRequires: libappstream-glib
 BuildRequires: libsecret-devel >= 0.18
-%if %{defined el8}
-BuildRequires: boost-devel >= 1.66.0
-%else
+%if 0%{?rhel} >= 9
 BuildRequires: boost-devel >= 1.67.0
+%else
+BuildRequires: boost169-devel >= 1.67.0
 %endif
 BuildRequires: gtest-devel >= 1.8.0, gmock-devel >= 1.8.0
 BuildRequires: webkitgtk4-devel >= 2.14.1
@@ -57,11 +55,11 @@ balanced books.
 %build
 # thanks gcc8
 %global optflags %{optflags} -Wno-parentheses
-%cmake -D WITH_PYTHON=ON .
-%cmake_build
+%cmake -D WITH_PYTHON=ON -D BOOST_INCLUDEDIR=/usr/include/boost169 -D BOOST_LIBRARYDIR=/usr/lib64/boost169/ .
+%make_build
 
 %install
-%cmake_install
+%make_install
 
 %find_lang %{name}
 
@@ -77,9 +75,9 @@ rm -rf $RPM_BUILD_ROOT/%{_infodir} \
 	$RPM_BUILD_ROOT/%{_libdir}/gnucash/lib*.a \
 	$RPM_BUILD_ROOT/%{_bindir}/gnc-test-env \
 	$RPM_BUILD_ROOT/%{_bindir}/gnc-fq-update \
-	$RPM_BUILD_ROOT/%{_datadir}/guile/site/%{guilever}/tests
+	$RPM_BUILD_ROOT/%{_datadir}/guile/site/2.0/tests
 
-find $RPM_BUILD_ROOT/%{_libdir} -name *.la -delete
+find $RPM_BUILD_ROOT/%{_libdir} -name *.la -exec rm -f {} \;
 
 %check
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/gnucash.desktop
@@ -91,13 +89,11 @@ appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_datadir}/metainfo/gnucas
 %license LICENSE
 %dir %{_sysconfdir}/gnucash
 %{_bindir}/*
-%{_libdir}/gnucash/
-%{_libdir}/guile/%{guilever}/site-ccache/gnucash/
-%{python3_sitearch}/gnucash/
+%{_libdir}/*
 %exclude /usr/lib/debug
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/gnucash
-%{_datadir}/guile/site/%{guilever}/gnucash
+%{_datadir}/guile/site/2.0/gnucash
 %{_datadir}/metainfo/*
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/*/apps/*
@@ -105,92 +101,24 @@ appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_datadir}/metainfo/gnucas
 %config(noreplace) %{_sysconfdir}/gnucash/*
 
 %changelog
-* Mon Dec 20 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.9-1
-- 4.9
-
-* Thu Dec 09 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.8-1
-- 4.8
-
-* Mon Sep 27 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.7-1
-- 4.7
-
-* Thu Sep 23 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.6-5
-- Fix directory ownership.
-
-* Fri Aug 06 2021 Jonathan Wakely <jwakely@redhat.com> - 4.6-4
-- Rebuilt for Boost 1.76
-
-* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.6-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Fri Jul 16 2021 Paul Howarth <paul@city-fan.org> - 4.6-2
-- Add fix for crash in transfers between accounts with different currencies
-  https://bugs.gnucash.org/show_bug.cgi?id=798221
-  https://bugs.gnucash.org/show_bug.cgi?id=798243
-- Add fix for truncation of fund/currency prices
-  https://bugs.gnucash.org/show_bug.cgi?id=798219
-
-* Mon Jun 28 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.6-1
-- 4.6
-
-* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 4.5-4
-- Rebuilt for Python 3.10
-
-* Wed Jun 02 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.5-3
-- Remove RPATH.
-
-* Wed May 19 2021 Pete Walter <pwalter@fedoraproject.org> - 4.5-2
-- Rebuild for ICU 69
-
-* Fri Apr 09 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.5-1
-- 4.5
-
-* Sat Feb 13 2021 Bill Nottingham <notting@splat.cc> - 4.4-2
-- fix build with glib 2.67.3+ (#1927622)
-
-* Sat Jan 30 2021 Gwyn Ciesla <gwync@protonmail.com> - 4.4-1
-- 4.4
-
-* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.2-6
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Mon Jan 25 2021 Jonathan Wakely <jwakely@redhat.com> - 4.2-5
-- Fix __STRICT_ANSI__ issue exposed by gcc-11
-
-* Fri Jan 22 2021 Jonathan Wakely <jwakely@redhat.com> - 4.2-4
-- Rebuilt for Boost 1.75
-
-* Wed Oct 28 2020 Jeff Law <law@redhat.com> - 4.2-3
-- Fix volatile issue exposed by gcc-11
-
-* Wed Oct 14 2020 Jeff Law <law@redhat.com> - 4.2-2
-- Fix misleading indentation warning from gcc-11
-
-* Sun Oct 11 2020 Bill Nottingham <notting@splat.cc> - 4.2-1
-- update to 4.2
-
-* Mon Sep 14 2020 Peter Robinson <pbrobinson@fedoraproject.org> - 4.1-3
-- Build with guile 2.2
+* Sun Sep 26 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> 4.2-1
+- Updated to 4.2-1
 
 * Thu Aug 06 2020 Stefan Bluhm <stefan.bluhm@clacee.eu> 4.1-2
-- Updated "Source" to https.
+- Updated source to https.
 - Updated requirements.
-- Removed ktoblzcheck-devel requirement.
 
 * Mon Jul 27 2020 Bill Nottingham <notting@splat.cc> - 4.1-1
 - update to 4.1
 
-* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
-
 * Mon Jun 29 2020 Bill Nottingham <notting@splat.cc> - 4.0-1
 - update to 4.0
 
-* Fri Jun  5 2020 Peter Oliver <rpm@mavit.org.uk> - 3.10-5
-- Add weak dependencies on optional storage providers.
-
 * Thu Jun 04 2020 Jonathan Wakely <jwakely@redhat.com> - 3.10-4
 - Rebuilt and patched for Boost 1.73
+
+* Mon Jun  1 2020 Peter Oliver <rpm@mavit.org.uk> - 3.10-4
+- Add weak dependencies on optional storage providers.
 
 * Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 3.10-3
 - Rebuilt for Python 3.9
