@@ -30,6 +30,8 @@ pandoc -s -tman -o %{name}.1 %{SOURCE1}
 %build
 %set_build_flags
 %make_build 
+sed -i "s/python2/python3/" tools/csv-to-json.py
+sed -i "s/python2/python3/" tools/vrs-to-csv.py
 
 %install
 #mkdir -p %{buildroot}%{_bindir}
