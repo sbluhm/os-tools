@@ -10,8 +10,10 @@ Source0:        https://github.com/flightaware/dump1090/archive/refs/tags/v8.2.t
 Source1:        dump1090.md
 Source2:        %{name}.service
 
-BuildRequires:  gcc rtl-sdr-devel
+BuildRequires:  gcc
+BuildRequires:  ncurses-devel
 BuildRequires:  pandoc
+BuildRequires:  rtl-sdr-devel
 
 %description
 dump1090-fa is a ADS-B, Mode S, and Mode 3A/3C demodulator and decoder that will receive and decode aircraft transponder messages received via a directly connected software defined radio, or from data provided over a network connection.
