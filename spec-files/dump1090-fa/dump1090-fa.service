@@ -1,0 +1,11 @@
+[Unit]
+Description=dump1090-fa Mode S decoder for RTLSDR devices
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/dump1090-fa --net --quiet
+
+[Install]
+WantedBy=multi-user.target
