@@ -14,6 +14,7 @@ BuildRequires:  gcc
 BuildRequires:  ncurses-devel
 BuildRequires:  pandoc
 BuildRequires:  rtl-sdr-devel
+BuildRequires:  systemd-rpm-macros
 
 %description
 dump1090-fa is a ADS-B, Mode S, and Mode 3A/3C demodulator and decoder that will receive and decode aircraft transponder messages received via a directly connected software defined radio, or from data provided over a network connection.
