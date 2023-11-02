@@ -1,6 +1,6 @@
 Name:           pythran
 Version:        0.14.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ahead of Time Python compiler for numeric kernels
 
 # pythran is BSD
